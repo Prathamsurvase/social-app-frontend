@@ -1,0 +1,19 @@
+import React from "react";
+
+const PreviewImage= ({file})=>{
+
+
+    const [preview, setPreview] = React.useState(null);
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload= () => {
+        setPreview(reader.result); 
+    }
+
+    return
+    <div>
+        <img src={preview} alt='profile'/>
+    </div>
+};
+export default PreviewImage;
