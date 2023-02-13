@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { FaUserAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom"
 
 
 function PersonalInfo({ formData, setFormData }) {
@@ -21,82 +23,94 @@ function PersonalInfo({ formData, setFormData }) {
     }
   }, [image]);
 
+const navigate= useNavigate();
+
+  const goToLogin=()=>{
+    console.log(window.location)
+    window.location.pathname = "/login"
+  }
+
   return (
-    <div className="personal-info-container">
-      {preview ? (
-        <img
-          src={preview}
-          alt="preview"
-          onClick={() => {
-            setImage(null);
-          }}
-        />
-      ) : (
-        <button
-          className="profilebutton"
-          onClick={() => {
-            imageupload.current.click();
-          }}
-        >
-          {/* <FontAwesomeIcon icon="fa-sharp fa-solid fa-plus" /> */}
-         + Upload
-        </button>
-      )}
-      <input hidden type="file" onChange={handleImage} ref={imageupload} />
-      <br />
-      <formgroup className="form">
-        <input
-          type="text"
-          placeholder=""
-          classname="textbox"
-          value={formData.firstName}
-          onChange={(e) => {
-            setFormData({ ...formData, firstName: e.target.value });
-          }}
-        />
-        <label className="formlabel">First Name</label>
-      </formgroup>
-      <br />
-      <formgroup className="form">
+    <>
+        <div className="personal-info-container">
+          {preview ? (
+            <img className="profileimg"
+              src={preview}
+              alt="preview"
+              onClick={() => {
+                setImage(null);
+              }}
+            />
+          ) : (
+            <button
+              className="profilebutton"
+              onClick={() => {
+                imageupload.current.click();
+              }}
+            >
+              <div className="profileicon">
 
-      <input
-        type="text"
-        placeholder=""
-        value={formData.lastName}
-        onChange={(e) => {
-          setFormData({ ...formData, lastName: e.target.value });
-        }}
-        />
-          <label className="formlabel">last Name</label>
-        </formgroup>
-      <br />
-<forngroup className="form">
-
-      <input
-        type="email"
-        placeholder=""
-        value={formData.email}
-        onChange={(event) =>
-          setFormData({ ...formData, email: event.target.value })
-        }
-        />
-          <label className="formlabel">Email</label>
-        </forngroup>
-      <br />
-      <formgroup className="form">
-
-      <input
-        type="password"
-        placeholder=""
-        value={formData.password}
-        onChange={(event) =>
-          setFormData({ ...formData, password: event.target.value })
-        }
-        />
-          <label className="formlabel">Password</label>
-        </formgroup>
-      <br />
-    </div>
+             <FaUserAlt/>
+              </div>
+            </button>
+          )}
+          <input hidden type="file" onChange={handleImage} ref={imageupload} />
+          <br />
+          <formgroup className="form">
+            <input
+              type="text"
+              placeholder=""
+              classname="textbox"
+              value={formData.firstName}
+              onChange={(e) => {
+                setFormData({ ...formData, firstName: e.target.value });
+              }}
+            />
+            <label className="formlabel">First Name</label>
+          </formgroup>
+          <br />
+          <formgroup className="form">
+            <input
+              type="text"
+              placeholder=""
+              value={formData.lastName}
+              onChange={(e) => {
+                setFormData({ ...formData, lastName: e.target.value });
+              }}
+            />
+            <label className="formlabel">Last Name</label>
+          </formgroup>
+          <br />
+          <forngroup className="form">
+            <input
+              type="email"
+              placeholder=""
+              value={formData.email}
+              onChange={(event) =>
+                setFormData({ ...formData, email: event.target.value })
+              }
+            />
+            <label className="formlabel">Email</label>
+          </forngroup>
+          <br />
+          <formgroup className="form">
+            <input
+              type="password"
+              placeholder=""
+              value={formData.password}
+              onChange={(event) =>
+                setFormData({ ...formData, password: event.target.value })
+              }
+            />
+            <label className="formlabel">Password</label>
+          </formgroup>
+          <br />
+          <p id="alreadyaccount">
+              Already Have an account? <a style={{color: "#afd1ea", cursor: "pointer"}} className="sign_up_link" onClick={()=> goToLogin()}>Sign In</a>
+              {/* <span className="signin">Sign In</span> */}
+            </p>
+        </div>
+    </>
   );
 }
 

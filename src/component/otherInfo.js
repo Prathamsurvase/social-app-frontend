@@ -8,7 +8,7 @@ function OtherInfo({ formData, setFormData }) {
 
       <input
         type="text"
-        placeholder="."
+        placeholder=""
         value={formData.bio}
         onChange={(e) => {
             setFormData({ ...formData, bio: e.target.value });

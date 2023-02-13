@@ -3,18 +3,22 @@ import React from "react";
 
 function SignUpInfo({ formData, setFormData }) {
   return (
-    <div className="sign-up-container">
-     
-        <formgroup className="form">
+
+    
+<>
+    
+          <div>
+    
+    <formgroup className="form">
       <input
         type="date"
         placeholder=""
         value={formData.DOB}
         onChange={(event) =>
-            setFormData({ ...formData, DOB: event.target.value })
+          setFormData({ ...formData, DOB: event.target.value })
         }
         />
-        <label className="formlabel"></label>
+        <label className="formlabel"></label><br/>
 
         </formgroup>
         <formgroup className="form">
@@ -24,7 +28,7 @@ function SignUpInfo({ formData, setFormData }) {
         placeholder=""
         value={formData.phonenumber}
         onChange={(e) => {
-            setFormData({ ...formData, phonenumber: e.target.value });
+          setFormData({ ...formData, phonenumber: e.target.value });
         }}
         />
           <label className="formlabel">Phone Number
@@ -40,7 +44,7 @@ function SignUpInfo({ formData, setFormData }) {
         value={formData.occupation}
         onChange={(e) => {
             setFormData({ ...formData, occupation: e.target.value });
-        }}
+          }}
         />
           <label className="formlabel">Occupation</label>
         </formgroup>
@@ -53,13 +57,14 @@ function SignUpInfo({ formData, setFormData }) {
         placeholder=""
         value={formData.nationality}
         onChange={(e) => {
-            setFormData({ ...formData, nationality: e.target.value });
+          setFormData({ ...formData, nationality: e.target.value });
         }}
         />
           <label className="formlabel">Nationality</label>
         </formgroup>
       <br/> 
     </div>
+        </>
   );
 }
 
