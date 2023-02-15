@@ -1,10 +1,10 @@
 import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import "./component/formstyle.css";
 import Form from "./component/form";
 import Login from "./component/login";
 import Create from "./component/create";
 import Post from "./component/feed-post";
-import "./component/formstyle.css";
 
 
 function App() {

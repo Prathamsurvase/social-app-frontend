@@ -7,3 +7,10 @@ export const myAxios = axios.create({
     baseURL: BASE_URL,
 }); 
 
+export const privateAxios =axios.create({
+    baseURL : BASE_URL,
+})
+
+privateAxios.interceptors.request.use(config =>{
+    
+})

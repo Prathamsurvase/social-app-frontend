@@ -4,11 +4,13 @@ import { useEffect, useRef } from "react";
 import { LoadAllCatogoires } from "../services/category-service";
 import { useState } from "react";
 import JoditEditor from "jodit-react";
+import { getCurrentUserDetail } from "../auth";
 import { createPost as doCreatePost } from "../services/post-service";
 
 const Addpost = () => {
   const editor = useRef(null);
-  // const [content, setContent] = useState("");
+  // const [content, setContent] = useState(""); 
+   const [user, setUser] = useState(undefined)
 
   const [post, setPost] = useState({
     title: "",
@@ -30,6 +32,8 @@ const Addpost = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
+
+    setUser(getCurrentUserDetail())
     LoadAllCatogoires()
       .then((data) => {
         console.log(data);
@@ -54,6 +58,8 @@ const Addpost = () => {
     }
 
     // submit the form to the server
+
+    post['userId']= user.id
 
     doCreatePost(post).then(data=>{
       alert("post Created")

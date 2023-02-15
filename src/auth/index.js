@@ -36,3 +36,11 @@ export const getCurrentUserDetail=()=>{
         return false;
     }
 };
+export const getToken=()=>{
+    if(isLoggedin()){
+        return JSON.parse(localStorage.getItem("data")).token
+}
+else{
+    return null;
+}
+}
