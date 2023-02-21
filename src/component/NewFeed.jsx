@@ -5,6 +5,7 @@ import { loadAllPosts } from "../services/post-service";
 import Post from "./feed-post";
 import NavScrollExample from "./NavbarComp";
 import Rightbar from "./rightbar";
+import Spinner from 'react-bootstrap/Spinner';
 
 function NewFeed() {
   const [postContent, setPostContent] = useState(null);
@@ -37,7 +38,7 @@ function NewFeed() {
       </div>
       <div style={{ width: "100%", paddingTop: "120px" , display:"flex", flexDirection:"column"}}>
         {loading === true ? (
-          <a>Loading</a>
+          <Spinner animation="grow" />
         ) : (
           <>
             {postContent.map((data) => {
