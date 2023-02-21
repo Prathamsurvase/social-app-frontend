@@ -5,6 +5,11 @@ body{
 .container{
     padding: 20px;
 }
+@media screen and (min-width: 1320px) {
+
+    align-items: start;
+
+}
 
 .user{
     display: flex;

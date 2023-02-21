@@ -6,5 +6,5 @@
 
  export const loginUser=(loginDetails)=>{
 
-   return myAxios.post('/api/auth/login', loginDetails).then((response)=>response.data)
+   return myAxios.post('/auth/login', loginDetails).then((response)=>response.data)
  } 

@@ -5,6 +5,8 @@ import Form from "./component/form";
 import Login from "./component/login";
 import Create from "./component/create";
 import Post from "./component/feed-post";
+import NewFeed from "./component/NewFeed";
+import NavScrollExample from "./component/NavbarComp";
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
             <Route path="signup" element={<Form/>} />
             <Route path="create" element={<Create/>} />
             <Route path="/" element={<Post/>} />
+            <Route path="feed" element={<NewFeed/>} />
+            <Route path="navbar" element={<NavScrollExample/>} />
 
           </Routes>
         </BrowserRouter>

@@ -18,7 +18,7 @@ function SignUpInfo({ formData, setFormData }) {
           setFormData({ ...formData, DOB: event.target.value })
         }
         />
-        <label className="formlabel"></label><br/>
+        <label className="formlabel"></label><br/ >
 
         </formgroup>
         <formgroup className="form">

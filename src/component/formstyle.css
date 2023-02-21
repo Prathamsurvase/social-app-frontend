@@ -140,11 +140,13 @@ h1 {
   left: 1.4rem;
   cursor: text;
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+  margin-top: -8px;
+  margin-left: -10px;
 }
 .form input:focus ~ .formlabel,
 .form input:valid ~ .formlabel
 {
-  transform: translateX(13px) translateY(-1px);
+  transform: translateX(5px) translateY(-1px);
   top: -0.8rem;
   left: 0.5rem;
   font-size: 13px;

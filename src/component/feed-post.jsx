@@ -9,8 +9,11 @@ import { FcLike } from "react-icons/fc";
 import { BiComment } from "react-icons/bi";
 import { BiSend } from "react-icons/bi";
 import { Scrollbar } from "react-scrollbars-custom";
+import NavScrollExample from "./NavbarComp";
 
-const Post = () => {
+const Post = ({
+  postData
+}) => {
   const [like, setLike] = useState(false);
   const [likescount, setLikesCount] = useState("");
   const [likesshow, setLikesShow] = useState();
@@ -29,8 +32,11 @@ const Post = () => {
       setLikesShow("likes");
     }
   };
+  console.log("chandan", postData)
 
   return (
+    <>
+    
     <div className="post">
       <div className="container">
         <div className="user">
@@ -42,7 +48,7 @@ const Post = () => {
                 className="username"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                Raman Kumar Singh
+                {postData?.user?.firstName} {postData?.user?.lastName}
               </a>
               <span className="time">1 min ago</span>
             </div>
@@ -50,7 +56,10 @@ const Post = () => {
           <MdMoreVert />
         </div>
         <div className="content">
-          <p>
+          {
+            postData?.content
+          }
+          {/* <p>
             The third seminar will be at 09.00.
             <br />
             MBG (Eng) Departmental Seminar "Machine Learning: a promising
@@ -62,7 +71,7 @@ const Post = () => {
             Zoom link: https://lnkd.in/dEXUveSc
             <br />
             Raman Singh: 948 4797 9883
-          </p>
+          </p> */}
           <img className="postpic" src={Mlpost} onDoubleClick={handlelikes} />
         </div>
 
@@ -92,6 +101,7 @@ const Post = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 export default Post;

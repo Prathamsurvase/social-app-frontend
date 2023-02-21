@@ -1,10 +1,26 @@
+import { privateAxios } from "./helper";
 import { myAxios } from "./helper";
 
 export const createPost=(postData)=>{
 
     console.log(postData)
-    return myAxios.post(`/user/${postData.user.id}/category/${postData.categoryid}/posts`, postData).then(response=> response.data)
+    return privateAxios.post(`/user/${postData.userId}/category/${postData.categoryId}/posts`).then(response=> response.data)
+    //video= 18 time= 27:00 min      
 }
 
+//get all posts
 
-//video= 18 time= 27:00 min
+export const loadAllPosts =()=>{
+    return myAxios.get(`/posts`).then(response => response.data)
+}
+
+//Upload Post Banner:
+
+// export const uploadPostImage = (image)=>{
+//     let formData = new FormData()
+//     formData.append("image", image)
+//     return privateAxios.post(``,formData).then((response)=> response.data)
+// }
+
+
+

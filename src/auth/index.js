@@ -30,7 +30,8 @@ export const doLogout=(next)=>{
 
 export const getCurrentUserDetail=()=>{
     if(isLoggedin){
-        return JSON.parse(localStorage.getItem("data"));
+        // return JSON.parse(localStorage.getItem("data"));
+        return JSON.parse(localStorage.getItem("data")).user;
     }
     else{
         return false;

@@ -16,7 +16,10 @@ const Addpost = () => {
     title: "",
     content: "",
     categoryId: "",
+    image: "",
   });
+
+  // const [image, setImage]= useState(null)
 
   const fieldchanged = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value });
@@ -58,8 +61,8 @@ const Addpost = () => {
     }
 
     // submit the form to the server
+      post['userId']= user.id
 
-    post['userId']= user.id
 
     doCreatePost(post).then(data=>{
       alert("post Created")
@@ -68,7 +71,13 @@ const Addpost = () => {
       alert('error')
       console.log(error)
     })
+
+    //Handling file Change event:
+
   };
+    const handleFileChange =(event)=>{
+      console.log(event.target.files[0])
+    }
   return (
     <div className="wrapper">
       <Card>
@@ -101,6 +110,20 @@ const Addpost = () => {
                 onChange={contentFieldChanged}
               />
             </div>
+
+            <div className="mt-3" encType="multipart/form-data">
+              <Label for="image">Upload Image</Label>
+              <Input 
+              id="postImage" 
+              type="file" 
+              name="image"
+              // onChange={handleFileChange}
+              onChange={fieldchanged}
+
+              />
+            </div>
+
+
             <div>
               <Label for="category">Category</Label>
               <Input
