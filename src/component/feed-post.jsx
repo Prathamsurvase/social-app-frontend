@@ -3,13 +3,16 @@ import Comments from "./comments";
 import { MdMoreVert } from "react-icons/md";
 import Userprofile from "./images/ramanprofile.jpg";
 import Mlpost from "./images/mlpost.png";
+import { Modal, ModalHeader } from "reactstrap";
 import "./feed-post.css";
 import { FaRegHeart } from "react-icons/fa";
 import { FcLike } from "react-icons/fc";
 import { BiComment } from "react-icons/bi";
 import { BiSend } from "react-icons/bi";
-import { Scrollbar } from "react-scrollbars-custom";
-import NavScrollExample from "./NavbarComp";
+// import { Scrollbar } from "react-scrollbars-custom";
+// import NavScrollExample from "./NavbarComp";
+import parse from 'html-react-parser';
+
 
 const Post = ({
   postData
@@ -19,6 +22,8 @@ const Post = ({
   const [likesshow, setLikesShow] = useState();
 
   const [commentopen, setCommentOpen] = useState(false);
+
+  const [modal, setModal] = useState(false)
 
   //handle likes
   const handlelikes = () => {
@@ -53,11 +58,30 @@ const Post = ({
               <span className="time">1 min ago</span>
             </div>
           </div>
-          <MdMoreVert />
+          <Modal
+          size="lg"
+          style={{
+            marginTop: "100px"
+          }}
+            isOpen={modal}
+            toggle ={()=>setModal(!modal)}
+            >
+            <ModalHeader
+            toggle ={()=>setModal(!modal)}
+            >
+              {
+                <>
+                <h2>{postData?.title}</h2>
+                <>{parse(postData?.content)}</>
+                </>
+              }
+            </ModalHeader>
+          </Modal>
+          <button style={{backgroundColor:"none"}}  onClick={()=> setModal(true)}> <MdMoreVert /></button>
         </div>
-        <div className="content">
+        <div className="content" >
           {
-            postData?.content
+             parse(postData?.content)
           }
           {/* <p>
             The third seminar will be at 09.00.

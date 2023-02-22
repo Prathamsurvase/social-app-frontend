@@ -6,9 +6,17 @@ import { FaRegSun } from "react-icons/fa";
 import { FaExclamationCircle } from "react-icons/fa";
 import { FaHeadset } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
+import { useNavigate, useNavigation } from "react-router-dom";
 import "./rightbar.css"
 
+
 function Rightbar() {
+  const navigate = useNavigate();
+
+  const user = JSON.parse(localStorage.getItem("data")).user 
+
+  console.log("USER", user)
+
   return (
     <div className="rightbar">
       <div className="leftinfo">
@@ -16,10 +24,9 @@ function Rightbar() {
           <FaUserAlt />
         </div>
         <div className="handle">
-          <div className="username">Aniket Jha</div>
+          <div className="username">{user?.firstName} {user?.lastName}</div>
           <p>
-            Student at PARUL INSTITUTE OF <br />
-            ENGG. AND TECH.
+          {user?.occupation}, {user?.about}
           </p>
         </div>
       </div>
@@ -41,7 +48,12 @@ function Rightbar() {
         </div>
         <div className="create" style={{ marginBottom: 10 }}>
           <FaPlusSquare />
-          <a href="">Create</a>
+          <a 
+          style={{cursor: "pointer"}}
+          onClick= {()=> {
+            navigate("/create")
+          }}
+          >Create</a>
         </div>
         <div className="events" style={{ marginBottom: 10 }}>
           <FaCalendarCheck />
@@ -66,9 +78,13 @@ function Rightbar() {
           <FaHeadset />
           <a href="">Help and Support</a>
         </div>
-        <div className="logout">
+        <div className="logout" onClick={()=> {
+          localStorage.removeItem("TOKEN_VALUE");
+          navigate("/login")
+
+        }}>
           <FaSignOutAlt />
-          <a href="">Logout</a>
+          <a >Logout</a>
         </div>
       </div>
     </div>

@@ -6,6 +6,9 @@ import { useState } from "react";
 import JoditEditor from "jodit-react";
 import { getCurrentUserDetail } from "../auth";
 import { createPost as doCreatePost } from "../services/post-service";
+var axios = require('axios');
+var FormData = require('form-data');
+var fs = require('fs');
 
 const Addpost = () => {
   const editor = useRef(null);
@@ -64,13 +67,31 @@ const Addpost = () => {
       post['userId']= user.id
 
 
-    doCreatePost(post).then(data=>{
-      alert("post Created")
+    // doCreatePost(post).then(data=>{
+    //   alert("post Created")
 
-    }).catch((error)=>{
-      alert('error')
-      console.log(error)
-    })
+    // }).catch((error)=>{
+    //   alert('error')
+    //   console.log(error)
+    // })
+
+    var config = {
+      method: 'post',
+    maxBodyLength: Infinity,
+      url: 'http://localhost:9090/api/user/1/category/1/posts',
+      headers: { 
+        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2akBkZXYuaW4iLCJleHAiOjE2NzY5OTcxMTcsImlhdCI6MTY3Njk3OTExN30.en_V1R2_0t9bqrgcWwDp2g-4mv9QnwNEK-9v1jJE4l0Wd53TprqvfBdOduWiIdsrbV63rZW-v5-XCgXa-oapSA', 
+      },
+      data : post
+    };
+
+    axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
 
     //Handling file Change event:
 

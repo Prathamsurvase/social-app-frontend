@@ -14,6 +14,9 @@ import "./navbar.css"
 
 
 function NavScrollExample() {
+  const user = JSON.parse(localStorage.getItem("data")).user 
+
+  console.log("USER", user)
   return (
     <Navbar className="navbar" expand="lg"
     style={{
@@ -55,9 +58,13 @@ function NavScrollExample() {
               <Nav.Link className="navoption" href="#action2"><FaBookmark/>Saved</Nav.Link>
               
             </Nav>
-          <div className="navprofile">
+            <div className="userprofile">
+            {user?.firstName} {user?.lastName}
+            <div className="navprofile">
             <FaUserAlt/>
           </div>
+            </div>
+         
           </Navbar.Collapse>
 
         </Container>

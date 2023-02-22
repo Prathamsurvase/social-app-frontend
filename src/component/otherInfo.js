@@ -9,9 +9,9 @@ function OtherInfo({ formData, setFormData }) {
       <input
         type="text"
         placeholder=""
-        value={formData.bio}
+        value={formData.other}
         onChange={(e) => {
-            setFormData({ ...formData, bio: e.target.value });
+            setFormData({ ...formData, other: e.target.value });
         }}
         />
           <label className="formlabel" id="biolabel">Bio</label>

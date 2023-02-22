@@ -46,8 +46,11 @@ const Login = () => {
         console.log("user login");
         console.log(data);
 
+        localStorage.setItem("TOKEN_VALUE", data?.token)
+
         doLogin(data, () => {
           console.log("login detail is saved successfully in local storage");
+          window.location.pathname = "/feed"
         });  
       })
       .catch((error) => {
@@ -109,6 +112,11 @@ const Login = () => {
                 id="passwordlogin"
                 value={loginDetails.password}
                 onChange={(e) => handleChange(e, "password")}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    handleFormSubmit()
+                  }
+                }}
               />
               <label className="loginformlabel" for="password">
                 Enter password

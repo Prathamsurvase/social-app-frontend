@@ -5,20 +5,44 @@ body{
 .container{
     padding: 20px;
 }
-@media screen and (min-width: 1320px) {
-
-    align-items: 
-
+.main-feed-container{
+    width: 100%;
+    padding-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    
 }
 
+@media only screen and (max-width: 1270px) {
+    .main-feed-container{
+        width: 100%;
+        padding-top: 120px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        margin-left: 60px;
+    }    
+  }
+
+  @media only screen and (max-width: 980px) {
+    .main-feed-container{
+        width: 100%;
+        padding-top: 120px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 60px;
+    }    
+  }
+  
 .user{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 .post{
-    margin: auto; 
-    margin-top: 50px;
 border-radius: 10px;
 overflow: hidden;
 height: auto;

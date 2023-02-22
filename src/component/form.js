@@ -7,6 +7,7 @@ import "./formstyle.css";
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
+import { signUp } from "../services/user-service";
 
 
 function Form() {
@@ -34,8 +35,17 @@ function Form() {
       return <OtherInfo formData={formData} setFormData={setFormData} />;
     }
   };
-  const submitform = async (e) => {
-    e.preventDefault();
+  const submitform = (event) => {
+    console.log(formData)
+    alert("CHANDAN")
+
+    signUp(formData).then((Response)=>{
+      console.log(Response)
+      console.log("done")
+    }).catch((error)=>{
+      console.log(error)
+      console.log("error")
+    })
     //   try {
     //     const response = await axios.get("http://localhost:8080/api/items");
     //     console.log(response.data);
@@ -67,7 +77,7 @@ function Form() {
 
       <div className="rightside">
         
-        <div className="form" onSubmit={submitform}>
+        <div className="form" >
           <div className="header">
             <h1>{FormTitles[page]}</h1>
             <p>Welcome! To the Club</p>
@@ -86,7 +96,10 @@ function Form() {
            
             <button
               onClick={() => {
+                submitform()
                 if (page === FormTitles.length - 1) {
+                  
+
                   alert("FORM SUBMITTED");
                   console.log(formData);
                 } else {

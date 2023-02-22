@@ -36,7 +36,7 @@ function NewFeed() {
       <div className="navbar" style={{ width: "100%", position: "fixed"}}>
         <NavScrollExample />
       </div>
-      <div style={{ width: "100%", paddingTop: "120px" , display:"flex", flexDirection:"column"}}>
+      <div className="main-feed-container">
         {loading === true ? (
           <Spinner animation="grow" />
         ) : (
