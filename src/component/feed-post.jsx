@@ -12,6 +12,7 @@ import { BiSend } from "react-icons/bi";
 // import { Scrollbar } from "react-scrollbars-custom";
 // import NavScrollExample from "./NavbarComp";
 import parse from 'html-react-parser';
+import Base64ToImage from "./Base64ToImage";
 
 
 const Post = ({
@@ -96,7 +97,9 @@ const Post = ({
             <br />
             Raman Singh: 948 4797 9883
           </p> */}
-          <img className="postpic" src={Mlpost} onDoubleClick={handlelikes} />
+          <img className="postpic" src={`data:image/png;base64,${postData?.postImage}`} onDoubleClick={handlelikes} />
+
+          {/* <Base64ToImage base64String ={postData?.postImage}/> */}
         </div>
 
         <div className="footer">

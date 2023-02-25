@@ -5,10 +5,11 @@ import { LoadAllCatogoires } from "../services/category-service";
 import { useState } from "react";
 import JoditEditor from "jodit-react";
 import { getCurrentUserDetail } from "../auth";
+import "./createform.css";
 import { createPost as doCreatePost } from "../services/post-service";
 var axios = require('axios');
 var FormData = require('form-data');
-var fs = require('fs');
+// var fs = require('fs');
 
 const Addpost = () => {
   const editor = useRef(null);
@@ -100,17 +101,17 @@ const Addpost = () => {
       console.log(event.target.files[0])
     }
   return (
-    <div className="wrapper">
+    <div className="wrapper" id="createmaincontainer">
       <Card>
         <CardBody>
-          <h1>What is in your Mind?</h1>
+          <h1 id="createheading">What is in your Mind?</h1>
           {JSON.stringify(post)}
 
           <Form onSubmit={CreatePost}>
-            <div>
+            <div className="titlecontainer">
               <Label for="title">Post Title</Label>
-              <Input
-                type="text"
+              <input
+               type="text"
                 id="posttitle"
                 placeholder="Enter Here"
                 name="title"
@@ -124,7 +125,7 @@ const Addpost = () => {
                 id="postdescription"
                 placeholder="Enter Here"
               /> */}
-              <JoditEditor
+              <JoditEditor id="contentbox"
                 ref={editor}
                 // value={content}
 

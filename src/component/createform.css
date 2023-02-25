@@ -1,0 +1,34 @@
+body{
+    background-color: antiquewhite;
+}
+#createheading{
+    text-align: center;
+    color: black;
+    margin: 20px;
+}
+#createmaincontainer{
+    width: 900px;
+    margin: auto;
+    border: none;
+
+}
+#posttitle{
+    width: 700px;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+    /* cursor: text; */
+    /* /* pointer-events: none;  */
+    ;
+}
+
+#contentbox{
+    border: none;
+}
+.titlecontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
