@@ -38,8 +38,6 @@ const Post = ({
       setLikesShow("likes");
     }
   };
-  console.log("chandan", postData)
-
   return (
     <>
     
@@ -78,7 +76,7 @@ const Post = ({
               }
             </ModalHeader>
           </Modal>
-          <button style={{backgroundColor:"none"}}  onClick={()=> setModal(true)}> <MdMoreVert /></button>
+          <button style={{backgroundColor:"white", color:"black"}}  onClick={()=> setModal(true)}> <MdMoreVert /></button>
         </div>
         <div className="content" >
           {
@@ -97,7 +95,11 @@ const Post = ({
             <br />
             Raman Singh: 948 4797 9883
           </p> */}
-          <img className="postpic" src={`data:image/png;base64,${postData?.postImage}`} onDoubleClick={handlelikes} />
+
+          {
+            postData?.imageName !== null && <img className="postpic" src={`data:image/png;base64,${postData?.postImage}`} onDoubleClick={handlelikes} />
+          }
+          
 
           {/* <Base64ToImage base64String ={postData?.postImage}/> */}
         </div>

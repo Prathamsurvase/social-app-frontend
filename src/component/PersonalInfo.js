@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom"
 function PersonalInfo({ formData, setFormData }) {
   const [image, setImage] = useState("");
   const imageupload = useRef(null);
+  
   function handleImage(e) {
     setImage(e.target.files[0]);
     console.log(e.target.files);

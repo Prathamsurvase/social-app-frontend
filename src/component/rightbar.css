@@ -1,9 +1,9 @@
 .rightbar {
     position: fixed;
     right: 0;
-    top: 110px;
+    top: 70px;
     border: none;
-    height: 600px;
+    height: 575px;
     margin-right: 50px;
     padding: 0;
     border-radius: 10px;
@@ -11,6 +11,8 @@
     margin-top: 56px ;
     background-color: white;
     max-width: 400px;
+    padding-top: 15px;
+    
     
 }
 
@@ -110,6 +112,8 @@ span{
     padding-left: 20px;
     
     
+    
+    
  }
 .following p {
     font-weight: bold;
@@ -132,4 +136,10 @@ hr {
     text-align: left;
     font-size: 20px;
     margin-left: 30px;
+}
+.logout{
+    cursor: pointer;
+}
+.icon{
+    margin-left: 1px;
 }

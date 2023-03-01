@@ -37,7 +37,7 @@ function Form() {
   };
   const submitform = (event) => {
     console.log(formData)
-    alert("CHANDAN")
+    // alert("CHANDAN")
 
     signUp(formData).then((Response)=>{
       console.log(Response)

@@ -13,14 +13,31 @@ body{
 
 }
 #posttitle{
-    width: 700px;
+    width: 300px;
     height: 40px;
-    border: none;
-    border-bottom: 1px solid black;
-    border-radius: 0;
+    border: 1px solid #EEEEEE;
+    border-radius: 5px;
+
+    /* border: none; */
+    /* border-bottom: 1px solid black;   */
+
+    padding: 10px
+
     /* cursor: text; */
     /* /* pointer-events: none;  */
     ;
+}
+.tagcontainer{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+#postags{
+    width: 300px;
+    height: 40px;
+    border: 1px solid #EEEEEE;
+    border-radius: 5px;
 }
 
 #contentbox{
@@ -30,5 +47,49 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 5px;
     
+}
+.header{
+    display: flex;
+    gap: 130px;
+}
+
+#imagecontainer{
+    border: 2px dashed #EEEEEE;
+ display: flex;
+ flex-direction: row;
+ gap: 10px;
+ align-content: center ;
+    
+
+}
+.imageicon{
+    font-size: 40px;
+    margin-top: -11px;
+
+}
+#uploadtext{
+    display: flex;
+    align-self: center;
+}
+#createpostbtn{
+    background-color: #2192FF;
+    width: 100px;
+    border-radius: 5px;
+}
+#postimage{
+    width: auto;
+    height: 500px;
+    text-align: center;
+    /* display: flex;
+    align-self: center; */
+
+}
+#post{
+    text-align: center;
+    border: 1px solid #EEEEEE;
+    margin-top: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
 }

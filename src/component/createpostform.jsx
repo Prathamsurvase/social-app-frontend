@@ -7,8 +7,10 @@ import JoditEditor from "jodit-react";
 import { getCurrentUserDetail } from "../auth";
 import "./createform.css";
 import { createPost as doCreatePost } from "../services/post-service";
-var axios = require('axios');
-var FormData = require('form-data');
+import { MultiSelect } from "react-multi-select-component";
+import { FcImageFile } from "react-icons/fc";
+import axios from 'axios';
+
 // var fs = require('fs');
 
 const Addpost = () => {
@@ -23,10 +25,22 @@ const Addpost = () => {
     image: "",
   });
 
-  // const [image, setImage]= useState(null)
+  const options = [{
+    
+  }]
+
+  const [postImage, setPostImage]= useState("")
+
+  const [createPostImage, setcreatePostImage] = useState();
+
+
 
   const fieldchanged = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value });
+    setPostImage(URL.createObjectURL(event.target.files[0]))
+    setcreatePostImage(
+      event.target.files[0]
+    )
   };
 
   const contentFieldChanged = (data) => {
@@ -51,7 +65,7 @@ const Addpost = () => {
       });
   }, []);
 
-  const CreatePost = (event) => {
+  const CreatePost = async (event) => {
     event.preventDefault();
     console.log("form is submitted");
     console.log(post);
@@ -66,35 +80,24 @@ const Addpost = () => {
 
     // submit the form to the server
       post['userId']= user.id
+      
+      var formData = new FormData();
+      formData.append('title', post?.content);
+      formData.append('content', post?.title);
+      formData.append('image', createPostImage);
 
+      try {
+        const response = await axios.post(`http://localhost:9090/api/user/${1 }/category/${1}/posts`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    
 
-    // doCreatePost(post).then(data=>{
-    //   alert("post Created")
-
-    // }).catch((error)=>{
-    //   alert('error')
-    //   console.log(error)
-    // })
-
-    var config = {
-      method: 'post',
-    maxBodyLength: Infinity,
-      url: 'http://localhost:9090/api/user/1/category/1/posts',
-      headers: { 
-        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2akBkZXYuaW4iLCJleHAiOjE2NzY5OTcxMTcsImlhdCI6MTY3Njk3OTExN30.en_V1R2_0t9bqrgcWwDp2g-4mv9QnwNEK-9v1jJE4l0Wd53TprqvfBdOduWiIdsrbV63rZW-v5-XCgXa-oapSA', 
-      },
-      data : post
-    };
-
-    axios(config)
-.then(function (response) {
-  console.log(JSON.stringify(response.data));
-})
-.catch(function (error) {
-  console.log(error);
-});
-
-    //Handling file Change event:
 
   };
     const handleFileChange =(event)=>{
@@ -105,19 +108,56 @@ const Addpost = () => {
       <Card>
         <CardBody>
           <h1 id="createheading">What is in your Mind?</h1>
-          {JSON.stringify(post)}
+          {/* {JSON.stringify(post)} */}
 
           <Form onSubmit={CreatePost}>
+            <div className="header">
             <div className="titlecontainer">
-              <Label for="title">Post Title</Label>
+              <label for="title">Post Title:</label>
               <input
                type="text"
                 id="posttitle"
                 placeholder="Enter Here"
                 name="title"
                 onChange={fieldchanged}
+                style={{padding:"10px"}}
               />
             </div>
+            <div className="tagcontainer">
+              <label for="tag">Tags:</label>
+              <input
+               type="text"
+                id="postags"
+                placeholder="Enter Here"
+                name="tag"
+                // onChange={fieldchanged}
+                style={{padding:"10px"}}
+              />
+            </div>
+            </div>
+            
+            <div className="mt-3" encType="multipart/form-data" id="imagecontainer">
+              <label for="image" ><div className="imageicon" ><FcImageFile/></div></label>
+              <input 
+              id="image" 
+              type="file" 
+              name="image"
+              onChange={fieldchanged}
+            
+              style={{visibility:"hidden", position:"absolute"}}
+
+              />
+              <label id="uploadtext">Upload Your Image</label>
+              
+            </div>
+            <div id="post">
+
+              {
+                postImage !== "" && <><img id="postimage" src={postImage} alt="image"></img></>
+              }
+            
+            </div>
+
             <div>
               <Label for="content">Post Content</Label>
               {/* <Input
@@ -133,17 +173,6 @@ const Addpost = () => {
               />
             </div>
 
-            <div className="mt-3" encType="multipart/form-data">
-              <Label for="image">Upload Image</Label>
-              <Input 
-              id="postImage" 
-              type="file" 
-              name="image"
-              // onChange={handleFileChange}
-              onChange={fieldchanged}
-
-              />
-            </div>
 
 
             <div>
@@ -155,14 +184,16 @@ const Addpost = () => {
                 name="categoryId"
                 onChange={fieldchanged}
                 defaultValue={0}
-              >
+                >
                 <option disabled value={0}>
-                  --Select Category--
+                  --Select Category--     
                 </option>
+                
                 {categories.map((category) => (
                   <option value={category.categoryId} key={category.categoryId}>
                     {category.categoryTitle}
                   </option>
+                  
                 ))}
 
                 {/* <option>None</option> 
@@ -178,7 +209,7 @@ const Addpost = () => {
             </div>
 
             <Container className="text-center">
-              <button type="submit" color="primary">
+              <button type="submit" id="createpostbtn">
                 Create Post
               </button>
             </Container>

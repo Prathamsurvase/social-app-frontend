@@ -14,6 +14,10 @@ export const loadAllPosts =()=>{
     return myAxios.get(`/posts`).then(response => response.data)
 }
 
+export const Loadcategorywise =(categoryId)=>{
+    return privateAxios(`category/${categoryId}/posts`).then(response=>response.data)
+}
+
 //Upload Post Banner:
 
 // export const uploadPostImage = (image)=>{

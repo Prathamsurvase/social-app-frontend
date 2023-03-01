@@ -6,6 +6,7 @@ import Post from "./feed-post";
 import NavScrollExample from "./NavbarComp";
 import Rightbar from "./rightbar";
 import Spinner from 'react-bootstrap/Spinner';
+import Categoriesmenu from "./categoriesmenu";
 
 function NewFeed() {
   const [postContent, setPostContent] = useState(null);
@@ -51,6 +52,17 @@ function NewFeed() {
         <div>
         <h1>Hiii</h1>
         <Rightbar/>
+        <div
+          style={{
+            position: "fixed",
+            top: "100px",
+            left: "10px",
+            
+          }}
+        >
+        <Categoriesmenu/>
+
+        </div>
 
         </div>
             

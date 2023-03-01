@@ -7,6 +7,8 @@ import Create from "./component/create";
 import Post from "./component/feed-post";
 import NewFeed from "./component/NewFeed";
 import NavScrollExample from "./component/NavbarComp";
+import Categoriesmenu from "./component/categoriesmenu";
+import Categories from "./component/categories";
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
             <Route path="/" element={<Post/>} />
             <Route path="feed" element={<NewFeed/>} />
             <Route path="navbar" element={<NavScrollExample/>} />
+            <Route path="categories" element={<Categoriesmenu/>} />
+            <Route path="categories/:categoryId" element={<Categories/>} />
 
           </Routes>
         </BrowserRouter>
