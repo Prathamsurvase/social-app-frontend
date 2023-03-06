@@ -1,22 +1,24 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { loadAllPosts } from "../services/post-service";
+import { loadAllBookMarkPosts, loadAllPosts } from "../services/post-service";
 import Post from "./feed-post";
 import NavScrollExample from "./NavbarComp";
 import Rightbar from "./rightbar";
 import Spinner from 'react-bootstrap/Spinner';
 import Categoriesmenu from "./categoriesmenu";
 
-function NewFeed() {
+function BookMark() {
   const [postContent, setPostContent] = useState(null);
 
   const [loading, setLoading] = useState(true);
 
+  const userDetails = JSON.parse(localStorage.getItem("data"))
+
   useEffect(() => {
     //load all posts from server
 
-    loadAllPosts()
+    loadAllBookMarkPosts(userDetails.user.id)
       .then((data) => {
         // console.log(data);
         setPostContent(data);
@@ -70,4 +72,4 @@ function NewFeed() {
   );
 }
 
-export default NewFeed;
+export default BookMark;

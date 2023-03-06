@@ -23,6 +23,7 @@ const Addpost = () => {
     content: "",
     categoryId: "",
     image: "",
+    caption:"",
   });
 
   const options = [{
@@ -33,6 +34,9 @@ const Addpost = () => {
 
   const [createPostImage, setcreatePostImage] = useState();
 
+  const [caption, setCaption] = useState("");
+
+  const [categoryId, setCategoryId] = useState(0);
 
 
   const fieldchanged = (event) => {
@@ -65,10 +69,15 @@ const Addpost = () => {
       });
   }, []);
 
+  const data =JSON.parse( localStorage.getItem("data"))
+
+
   const CreatePost = async (event) => {
+    console.log("pratham", data.user.id, categoryId)
+    
     event.preventDefault();
     console.log("form is submitted");
-    console.log(post);
+    console.log("categories",categories);
     if (post.title.trim() === "") {
       alert("post title is required");
       return;
@@ -82,17 +91,19 @@ const Addpost = () => {
       post['userId']= user.id
       
       var formData = new FormData();
-      formData.append('title', post?.content);
-      formData.append('content', post?.title);
+      formData.append('title', post?.title);
+      formData.append('content', post?.content);
       formData.append('image', createPostImage);
+      formData.append('caption', caption);
 
       try {
-        const response = await axios.post(`http://localhost:9090/api/user/${1 }/category/${1}/posts`, formData, {
+        const response = await axios.post(`http://localhost:9090/api/user/${data.user.id}/category/${categoryId}/posts`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         });
         console.log(response.data);
+        window.location.pathname = "/feed"
       } catch (error) {
         console.error(error);
       }
@@ -123,14 +134,17 @@ const Addpost = () => {
                 style={{padding:"10px"}}
               />
             </div>
-            <div className="tagcontainer">
-              <label for="tag">Tags:</label>
+            <div className="captioncontainer">
+              <label for="caption">Caption:</label>
               <input
-               type="text"
-                id="postags"
+               type= "text"
+                id="postcaption"
                 placeholder="Enter Here"
-                name="tag"
-                // onChange={fieldchanged}
+                name="caption"
+                value={caption}
+                onChange={(e) => {
+                  setCaption(e.target.value)
+                }}
                 style={{padding:"10px"}}
               />
             </div>
@@ -182,7 +196,12 @@ const Addpost = () => {
                 id="category"
                 placeholder="Enter Here"
                 name="categoryId"
-                onChange={fieldchanged}
+                onChange={
+                  (e) =>{
+                    console.log("pratham", e.target.value)
+                    setCategoryId(e.target.value)
+                  }
+                }
                 defaultValue={0}
                 >
                 <option disabled value={0}>
@@ -190,7 +209,14 @@ const Addpost = () => {
                 </option>
                 
                 {categories.map((category) => (
-                  <option value={category.categoryId} key={category.categoryId}>
+                  <option value={category.categoryId} key={category.categoryId} 
+                  onSelect ={
+                    (e) =>{
+                      console.log("pratham ", e.target.value)
+                      setCategoryId(e.target.value)
+                    }
+                  }
+                  >
                     {category.categoryTitle}
                   </option>
                   

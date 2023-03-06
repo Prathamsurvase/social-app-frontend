@@ -9,6 +9,7 @@ function OtherInfo({ formData, setFormData }) {
       <input
         type="text"
         placeholder=""
+        className="textbox"
         value={formData.other}
         onChange={(e) => {
             setFormData({ ...formData, other: e.target.value });

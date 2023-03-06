@@ -14,6 +14,10 @@ export const loadAllPosts =()=>{
     return myAxios.get(`/posts`).then(response => response.data)
 }
 
+export const loadAllBookMarkPosts =(userID)=>{
+    return myAxios.get(`http://localhost:9090/api/bookmarks/user/${userID}`).then(response => response.data)
+}
+
 export const Loadcategorywise =(categoryId)=>{
     return privateAxios(`category/${categoryId}/posts`).then(response=>response.data)
 }

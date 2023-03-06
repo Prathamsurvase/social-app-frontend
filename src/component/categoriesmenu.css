@@ -1,0 +1,34 @@
+/* #categorymenu{
+
+} */
+#categorymenu::-webkit-scrollbar{
+    width: 10px;
+   
+}
+
+#categorymenu::-webkit-scrollbar-thumb{
+    background-color: #F7F7F7;
+    border-radius: 10px;
+
+}
+
+#categorymenu::-webkit-scrollbar-track{
+    background-color: white;
+    border-radius: 10px;
+}
+#explorecontainer{
+    /* border: 1px solid black; */
+    width: 300px;
+    padding: 0px 20px 20px 20px;
+    background-color: white;
+    margin-left: 50px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+#explore{
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    /* margin-top: 40px; */
+    
+}

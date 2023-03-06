@@ -5,6 +5,7 @@ import { ListGroup, ListGroupItem, ListGroupItemHeading } from 'reactstrap';
 import { LoadAllCatogoires } from '../services/category-service';
 import { Router, Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import "./categoriesmenu.css";
 
 function Categoriesmenu() {
 
@@ -35,17 +36,21 @@ function Categoriesmenu() {
   return (
 
    <>
-    <div style={{height: "600px", overflow: "scroll", overflowX: "auto", overflowY: "scroll"}}>
+   <div id="explorecontainer">
+    <div id="explore">Explore</div>
+
+   
+    <div id="categorymenu" style={{height: "500px", overflow: "scroll", overflowX: "auto", overflowY: "scroll"}}>
         <ListGroup>
             <ListGroupItem tag={Link} to="/feed">
                     All Categories
             </ListGroupItem>
             {categories && categories.map((cat, index)=>{
                 return(
-                    <ListGroupItem className="mt-1" key={index} 
+                    <ListGroupItem className="mt-2" key={index} 
                     style={{
                         cursor: "pointer",
-                        backgroundColor: selectedCategory.includes(cat.categoryId) ? "Blue" : "white"
+                        backgroundColor: selectedCategory.includes(cat.categoryId) ? "#AFD1EA" : "white"
                     }}
                         onClick={() => {
                             if (selectedCategory.includes(cat.categoryId)){
@@ -73,6 +78,7 @@ function Categoriesmenu() {
         window.location.pathname = "/categories/" + selectedCategory
     }}
     > VIEW CATEGORIES </Button>
+    </div>
 
    </>
    

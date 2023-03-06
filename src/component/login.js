@@ -63,6 +63,12 @@ const Login = () => {
           alert("Something Went Wrong on Server!!");
         }
       });
+      
+      const goToLogin=()=>{
+        console.log(window.location)
+        window.location.pathname = "/signup"
+      }
+    
 
 
     
@@ -71,6 +77,10 @@ const Login = () => {
     
                                                                          
   };
+  const goToLogin=()=>{
+    console.log(window.location)
+    window.location.pathname = "/signup"
+  }
   return (
     <>
       <div className="leftside">
@@ -126,8 +136,13 @@ const Login = () => {
             </FormGroup>
             
           </Form>
+          <p id="alreadyaccount">
+              Create an account <a style={{color: "#afd1ea", cursor: "pointer"}} className="sign_up_link" onClick={()=> goToLogin()}>Sign Up</a>
+              {/* <span className="signin">Sign In</span> */}
+            </p>
         </Container>
       </div>
+     
     </>
   );
 };

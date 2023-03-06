@@ -13,6 +13,7 @@ function SignUpInfo({ formData, setFormData }) {
       <input
         type="date"
         placeholder=""
+        className="textbox"
         value={formData.DOB}
         onChange={(event) =>
           setFormData({ ...formData, DOB: event.target.value })
@@ -26,9 +27,10 @@ function SignUpInfo({ formData, setFormData }) {
       <input
         type="text"
         placeholder=""
-        value={formData.phonenumber}
+        className="textbox"
+        value={formData.phoneNumber}
         onChange={(e) => {
-          setFormData({ ...formData, phonenumber: e.target.value });
+          setFormData({ ...formData, phoneNumber: e.target.value });
         }}
         />
           <label className="formlabel">Phone Number
@@ -41,6 +43,7 @@ function SignUpInfo({ formData, setFormData }) {
       <input
         type="text"
         placeholder=""
+        className="textbox"
         value={formData.occupation}
         onChange={(e) => {
             setFormData({ ...formData, occupation: e.target.value });
@@ -55,6 +58,7 @@ function SignUpInfo({ formData, setFormData }) {
       <input
         type="text"
         placeholder=""
+        className="textbox"
         value={formData.nationality}
         onChange={(e) => {
           setFormData({ ...formData, nationality: e.target.value });

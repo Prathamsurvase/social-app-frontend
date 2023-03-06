@@ -9,6 +9,9 @@ import NewFeed from "./component/NewFeed";
 import NavScrollExample from "./component/NavbarComp";
 import Categoriesmenu from "./component/categoriesmenu";
 import Categories from "./component/categories";
+import Userprofile from "./component/userprofile";
+import BookMark from "./component/BookMark";
+
 
 
 function App() {
@@ -24,7 +27,10 @@ function App() {
             <Route path="feed" element={<NewFeed/>} />
             <Route path="navbar" element={<NavScrollExample/>} />
             <Route path="categories" element={<Categoriesmenu/>} />
+            <Route path="userprofile" element={<Userprofile/>} />
             <Route path="categories/:categoryId" element={<Categories/>} />
+            <Route path="bookmark" element={<BookMark/>} />
+            
 
           </Routes>
         </BrowserRouter>

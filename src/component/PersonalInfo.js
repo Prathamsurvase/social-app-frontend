@@ -3,12 +3,13 @@ import { FaUserAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom"
 
 
-function PersonalInfo({ formData, setFormData }) {
+function PersonalInfo({ formData, setFormData, setProfileImage }) {
   const [image, setImage] = useState("");
   const imageupload = useRef(null);
   
   function handleImage(e) {
     setImage(e.target.files[0]);
+    setProfileImage(e.target.files[0])
     console.log(e.target.files);
   }
   const [preview, setPreview] = useState();
@@ -61,7 +62,7 @@ const navigate= useNavigate();
             <input
               type="text"
               placeholder=""
-              classname="textbox"
+              className="textbox"
               value={formData.firstName}
               onChange={(e) => {
                 setFormData({ ...formData, firstName: e.target.value });
@@ -73,6 +74,7 @@ const navigate= useNavigate();
           <formgroup className="form">
             <input
               type="text"
+              className="textbox"
               placeholder=""
               value={formData.lastName}
               onChange={(e) => {
@@ -86,6 +88,7 @@ const navigate= useNavigate();
             <input
               type="email"
               placeholder=""
+              className="textbox"
               value={formData.email}
               onChange={(event) =>
                 setFormData({ ...formData, email: event.target.value })
@@ -98,6 +101,7 @@ const navigate= useNavigate();
             <input
               type="password"
               placeholder=""
+              className="textbox"
               value={formData.password}
               onChange={(event) =>
                 setFormData({ ...formData, password: event.target.value })

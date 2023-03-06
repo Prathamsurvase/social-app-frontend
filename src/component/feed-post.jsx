@@ -13,6 +13,7 @@ import { BiSend } from "react-icons/bi";
 // import NavScrollExample from "./NavbarComp";
 import parse from 'html-react-parser';
 import Base64ToImage from "./Base64ToImage";
+var axios = require('axios');
 
 
 const Post = ({
@@ -26,6 +27,35 @@ const Post = ({
 
   const [modal, setModal] = useState(false)
 
+  const userDetails = JSON.parse(localStorage.getItem("data"))
+
+  const handleBookmark = (id) => {
+    var config = {
+      method: 'post',
+    maxBodyLength: Infinity,
+      url: `http://localhost:9090/api/bookmarks/user/${userDetails.user.id}/post/${id}`,
+      headers: { }
+    };
+    
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
+  } 
+
+  const [commentDetails, setCommentDetails] = useState({
+    loading: false,
+    success : true,
+    data: []
+
+  });
+
+
+
   //handle likes
   const handlelikes = () => {
     if (!like) {
@@ -38,6 +68,17 @@ const Post = ({
       setLikesShow("likes");
     }
   };
+
+  function timeAgo(date) {
+    const newdate = new Date(date)
+
+    const hour = newdate.getUTCHours();
+    const min = newdate.getUTCMinutes();
+
+    return `${hour}:${min}`
+  }
+  
+
   return (
     <>
     
@@ -45,7 +86,8 @@ const Post = ({
       <div className="container">
         <div className="user">
           <div className="userinfo">
-            <img className="userpostprofile" src={Userprofile} />
+            <img className="userpostprofile" 
+            src={`data:image/png;base64,${postData?.user?.profileImage}`} />
             <div className="userdetails">
               <a
                 href=""
@@ -54,7 +96,7 @@ const Post = ({
               >
                 {postData?.user?.firstName} {postData?.user?.lastName}
               </a>
-              <span className="time">1 min ago</span>
+              <span className="time">Posted at {timeAgo(postData?.addedDate)}</span>
             </div>
           </div>
           <Modal
@@ -79,8 +121,12 @@ const Post = ({
           <button style={{backgroundColor:"white", color:"black"}}  onClick={()=> setModal(true)}> <MdMoreVert /></button>
         </div>
         <div className="content" >
+          <h4>{
+            postData?.title
+          }</h4>
           {
-             parse(postData?.content)
+            //  parse(postData?.content)
+            postData?.caption
           }
           {/* <p>
             The third seminar will be at 09.00.
@@ -120,13 +166,13 @@ const Post = ({
             <BiComment />
           </div>
 
-          <div className="item">
+          <div className="item" onClick={() => handleBookmark(postData?.postId)}>
             <BiSend />
           </div>
         </div>
 
         <div className="commentsection" >
-          {commentopen && <Comments />}
+          {commentopen && <Comments postID={postData?.postId}/>}
         </div>
       </div>
     </div>

@@ -53,8 +53,9 @@ p{
 .profilebutton {
   height: 110px;
   width: 110px;
-  margin-top: -5px;
+  margin-top: -15px;
   font-family: poppins;
+  margin-bottom: 25px;
 
   border-radius: 100px;
   border: 1px solid rgba(119, 119, 119, 0.5);
@@ -65,24 +66,42 @@ p{
 }
 .profilebutton:hover{
   background-color: white;
+  
 
 }
 .profileicon{
-  font-size: 75px;
+  font-size: 70px;
   padding: 0px;
   color: rgb(224, 224, 224);
+  display: flex;
+ 
+ 
+  justify-content: center;
 }
 .profileicon:hover{
   font-size: 60px;
   transition: font-size 250ms ease-in;
 } 
-.header{
+.signupheader{
+  display: flex;
+  flex-direction: column;
   margin-bottom: 40px;
   margin-top: 0px;
 }
-.header>p{
+.signupheader>p{
   font-size: 15px;
   padding: 0px;
+}
+#signupfooter{
+
+    /* display: flex;
+  justify-self: center;
+  padding: 5px; */
+
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
 }
 
 
@@ -127,6 +146,7 @@ h1 {
 .textbox {
   outline: none;
   border-radius: 5px;
+  margin: 8px;
 }
 .formlabel {
   position: absolute;

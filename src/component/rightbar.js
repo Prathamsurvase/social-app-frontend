@@ -8,6 +8,7 @@ import { FaHeadset } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useNavigate, useNavigation } from "react-router-dom";
 import "./rightbar.css"
+import { Link } from "react-router-dom";
 
 
 function Rightbar() {
@@ -20,11 +21,16 @@ function Rightbar() {
   return (
     <div className="rightbar">
       <div className="leftinfo">
-        <div className="leftprofile">
-          <FaUserAlt />
-        </div>
+        <img className="leftprofile" 
+
+        src={`data:image/png;base64,${user?.profileImage}`}
+        >
+
+          {/* <FaUserAlt /> */}
+        </img>
         <div className="handle">
-          <div className="username">{user?.firstName} {user?.lastName}</div>
+          <div className="username"  tag={Link} to="/userprofile">
+            <a onClick={()=>navigate("/userprofile") }style={{cursor:"pointer", textDecoration:"none"}}>{user?.firstName} {user?.lastName}</a></div>
           <p>
           {user?.occupation}, {user?.about}
           </p>

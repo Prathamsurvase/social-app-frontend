@@ -52,17 +52,19 @@ function NavScrollExample() {
               style={{ maxHeight: "100px",marginLeft:20 }}
               navbarScroll
             >
-              <Nav.Link className="navoption"  href="#action1"><FaHome/>Home</Nav.Link>
+              <Nav.Link className="navoption"  href="/feed"><FaHome/>Home</Nav.Link>
               <Nav.Link className="navoption" href="#action2"><FaBell/>Notification</Nav.Link>
               <Nav.Link className="navoption" href="#action2"><FaFacebookMessenger/>Messages</Nav.Link>
-              <Nav.Link className="navoption" href="#action2"><FaBookmark/>Saved</Nav.Link>
+              <Nav.Link className="navoption" href="/bookmark"><FaBookmark/>Saved</Nav.Link>
               
             </Nav>
             <div className="userprofile">
             {user?.firstName} {user?.lastName}
-            <div className="navprofile">
-            <FaUserAlt/>
-          </div>
+            <img className="navprofile"
+            src={`data:image/png;base64,${user?.profileImage}`}
+            >
+            {/* <FaUserAlt/> */}
+          </img>
             </div>
          
           </Navbar.Collapse>

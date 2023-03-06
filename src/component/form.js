@@ -9,7 +9,6 @@ import { FaChevronLeft } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
 import { signUp } from "../services/user-service";
 
-
 function Form() {
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
@@ -18,17 +17,18 @@ function Form() {
     DOB: "",
     firstName: "",
     lastName: "",
-    phonenumber: "",
+    phoneNumber: "",
     occupation: "",
     nationality: "",
     other: "",
   });
+  const [profileImage, setProfileImage] = useState();
 
   const FormTitles = ["Profile Setup", "Personal Info", "Other"];
 
   const PageDisplay = () => {
     if (page === 0) {
-      return <PersonalInfo formData={formData} setFormData={setFormData} />;
+      return <PersonalInfo formData={formData} setFormData={setFormData} setProfileImage={setProfileImage}/>;
     } else if (page === 1) {
       return <SignUpInfo formData={formData} setFormData={setFormData} />;
     } else {
@@ -36,36 +36,30 @@ function Form() {
     }
   };
   const submitform = (event) => {
-    console.log(formData)
+    console.log(formData);
     // alert("CHANDAN")
+    var forData = new FormData();
+                forData.append("email", formData.email);
+                forData.append("password", formData.password);
+                forData.append("DOB", formData.DOB);
+                forData.append("firstName", formData.firstName);
+                forData.append("lastName", formData.lastName);
+                forData.append("phoneNumber", formData.phoneNumber);
+                forData.append("occupation", formData.occupation);
+                forData.append("nationality", formData.nationality);
+                forData.append("about", formData.other);
+                forData.append("image", profileImage);
 
-    signUp(formData).then((Response)=>{
-      console.log(Response)
-      console.log("done")
-    }).catch((error)=>{
-      console.log(error)
-      console.log("error")//hiiii
-    })
-    //   try {
-    //     const response = await axios.get("http://localhost:8080/api/items");
-    //     console.log(response.data);
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // };
-
-    //  await axios.post("http://localhost:9090/api/user/register", formData).then((response) => {
-    //   console.log(response)
-    //   console.log("success")
-    //  });
-
-    // signUp(formData).then((resp)=>{
-    //   console.log(resp);
-    //   console.log("success log");
-    // }).catch((error)=>{
-    //   console.log(error)
-    //   console.log("error")
-    // })
+    signUp(forData)
+      .then((res) => {
+        console.log(res);
+        console.log("done");
+        window.location.pathname = "/login";
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log("error");
+      });
   };
 
   return (
@@ -76,40 +70,43 @@ function Form() {
       </div>
 
       <div className="rightside">
-        
-        <div className="form" >
-          <div className="header">
+        <div className="form">
+          <div className="signupheader">
             <h1>{FormTitles[page]}</h1>
             <p>Welcome! To the Club</p>
           </div>
           <div className="body">{PageDisplay()}</div>
           <h1></h1>
-          <div className="footer">
+          <div className="signupfooter">
             <button
               disabled={page == 0}
               onClick={() => {
                 setPage((currPage) => currPage - 1);
               }}
+              style={{
+                marginRight: "20px",
+              }}
             >
-             <FaChevronLeft/>
+              <FaChevronLeft />
             </button>
-           
+
             <button
               onClick={() => {
-                submitform()
+                submitform();
+                
                 if (page === FormTitles.length - 1) {
-                  
-
-                  alert("FORM SUBMITTED");
                   console.log(formData);
                 } else {
                   setPage((currPage) => currPage + 1);
                 }
               }}
             >
-              {page === FormTitles.length - 1 ? <FaCheck/> : <FaChevronRight/>}
+              {page === FormTitles.length - 1 ? (
+                <FaCheck />
+              ) : (
+                <FaChevronRight />
+              )}
             </button>
-            
           </div>
         </div>
       </div>
