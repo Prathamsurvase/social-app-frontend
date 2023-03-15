@@ -2,13 +2,16 @@ import React from "react";
 import Addpost from "./createpostform";
 import { Container } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavScrollExample from "./NavbarComp";
 
 const Create = () => {
   return (
     <>
-    <Container>
+    <div style={{width: "100%"}}>
+      <NavScrollExample/>
+      <div style={{height: "30px"}}/>
       <Addpost />
-    </Container>
+    </div>
     </>
   );
 };

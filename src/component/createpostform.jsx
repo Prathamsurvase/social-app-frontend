@@ -10,6 +10,7 @@ import { createPost as doCreatePost } from "../services/post-service";
 import { MultiSelect } from "react-multi-select-component";
 import { FcImageFile } from "react-icons/fc";
 import axios from 'axios';
+import NavScrollExample from "./NavbarComp";
 
 // var fs = require('fs');
 
@@ -115,11 +116,15 @@ const Addpost = () => {
       console.log(event.target.files[0])
     }
   return (
+  
+    
     <div className="wrapper" id="createmaincontainer">
+      
       <Card>
         <CardBody>
           <h1 id="createheading">What is in your Mind?</h1>
           {/* {JSON.stringify(post)} */}
+          <hr style={{marginTop:"20px", marginBottom:"25px"}}/>
 
           <Form onSubmit={CreatePost}>
             <div className="header">
@@ -134,6 +139,7 @@ const Addpost = () => {
                 style={{padding:"10px"}}
               />
             </div>
+              <hr style={{marginTop:"15px"}}/>
             <div className="captioncontainer">
               <label for="caption">Caption:</label>
               <input
@@ -149,6 +155,7 @@ const Addpost = () => {
               />
             </div>
             </div>
+            <hr style={{marginTop:"15px"}}/>
             
             <div className="mt-3" encType="multipart/form-data" id="imagecontainer">
               <label for="image" ><div className="imageicon" ><FcImageFile/></div></label>
@@ -171,6 +178,7 @@ const Addpost = () => {
               }
             
             </div>
+            <hr style={{marginTop:"15px", marginBottom:"15px"}}/>
 
             <div>
               <Label for="content">Post Content</Label>
@@ -186,6 +194,7 @@ const Addpost = () => {
                 onChange={contentFieldChanged}
               />
             </div>
+            <hr style={{marginTop:"20px", marginBottom:"15px"}}/>
 
 
 
@@ -243,6 +252,7 @@ const Addpost = () => {
         </CardBody>
       </Card>
     </div>
+    
   );
 };
 

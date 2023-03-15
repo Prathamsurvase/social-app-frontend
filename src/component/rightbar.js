@@ -36,7 +36,7 @@ function Rightbar() {
           </p>
         </div>
       </div>
-      <div className="reach">
+      {/* <div className="reach">
         <div className="following">
           <span>following</span>
           <p>0</p>
@@ -45,8 +45,8 @@ function Rightbar() {
           <span>followers</span>
           <p>0</p>
         </div>
-      </div>
-      <hr />
+      </div> */}
+      <hr style={{marginBottom:"40px"}}/>
       <div className="more">
         <div className="request" style={{ marginBottom: 10, display:"flex",gap:12 }}>
           <div className="icon"><FaUserAlt/></div>

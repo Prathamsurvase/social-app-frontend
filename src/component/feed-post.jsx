@@ -9,6 +9,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { FcLike } from "react-icons/fc";
 import { BiComment } from "react-icons/bi";
 import { BiSend } from "react-icons/bi";
+import { FiBookmark } from "react-icons/fi";
 // import { Scrollbar } from "react-scrollbars-custom";
 // import NavScrollExample from "./NavbarComp";
 import parse from 'html-react-parser';
@@ -61,11 +62,11 @@ const Post = ({
     if (!like) {
       setLike(true);
       setLikesCount(likescount + 1);
-      setLikesShow("likes");
+      // setLikesShow("Likes");
     } else {
       setLike(false);
       setLikesCount(likescount - 1);
-      setLikesShow("likes");
+      // setLikesShow("Likes");
     }
   };
 
@@ -102,7 +103,8 @@ const Post = ({
           <Modal
           size="lg"
           style={{
-            marginTop: "100px"
+            marginTop: "100px",
+      
           }}
             isOpen={modal}
             toggle ={()=>setModal(!modal)}
@@ -112,22 +114,24 @@ const Post = ({
             >
               {
                 <>
-                <h2>{postData?.title}</h2>
-                <>{parse(postData?.content)}</>
+                <h2 style={{textAlign:"center", marginTop:"10px", marginBottom:"20px"}}>{postData?.title}</h2>
+                <hr style={{marginBottom:"20px"}}/>
+                <div style={{padding:"20px"}}>{parse(postData?.content)}</div>
                 </>
               }
             </ModalHeader>
           </Modal>
           <button style={{backgroundColor:"white", color:"black"}}  onClick={()=> setModal(true)}> <MdMoreVert /></button>
         </div>
+        <hr id="posthr"/>
         <div className="content" >
           <h4>{
             postData?.title
           }</h4>
-          {
+          <div style={{color:"#999999", fontFamily:"Poppins, sans-sarif"}}>{
             //  parse(postData?.content)
             postData?.caption
-          }
+          }</div>
           {/* <p>
             The third seminar will be at 09.00.
             <br />
@@ -160,19 +164,25 @@ const Post = ({
             <br />
             <span>{likescount}</span>
             <span>{likesshow}</span>
+            <span>Likes</span>
+            
+          
           </div>
 
-          <div className="item" onClick={() => setCommentOpen(!commentopen)}>
+          <div className="item" onClick={() => setCommentOpen(!commentopen)} style={{display:"flex", gap:"10px"}}>
             <BiComment />
+            <span>Comments</span>
           </div>
 
-          <div className="item" onClick={() => handleBookmark(postData?.postId)}>
-            <BiSend />
+          <div className="item" id="postsave" onClick={() => handleBookmark(postData?.postId)} style={{display:"flex", gap:"10px"}}>
+          <FiBookmark/>
+          <span>Save</span>
           </div>
         </div>
 
         <div className="commentsection" >
           {commentopen && <Comments postID={postData?.postId}/>}
+          
         </div>
       </div>
     </div>

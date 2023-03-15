@@ -11,6 +11,8 @@ import Categoriesmenu from "./component/categoriesmenu";
 import Categories from "./component/categories";
 import Userprofile from "./component/userprofile";
 import BookMark from "./component/BookMark";
+import Notification from "./component/notification";
+import Aboutus from "./component/aboutus";
 
 
 
@@ -23,13 +25,15 @@ function App() {
             <Route path="login" element={<Login/>} />
             <Route path="signup" element={<Form/>} />
             <Route path="create" element={<Create/>} />
-            <Route path="/" element={<Post/>} />
+            <Route path="/" element={<Login/>} />
             <Route path="feed" element={<NewFeed/>} />
             <Route path="navbar" element={<NavScrollExample/>} />
             <Route path="categories" element={<Categoriesmenu/>} />
             <Route path="userprofile" element={<Userprofile/>} />
             <Route path="categories/:categoryId" element={<Categories/>} />
             <Route path="bookmark" element={<BookMark/>} />
+            <Route path="notification" element={<Notification/>} />
+            <Route path="about" element={<Aboutus />} />
             
 
           </Routes>

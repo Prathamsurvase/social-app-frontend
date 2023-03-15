@@ -55,6 +55,7 @@
     color: #999999;
     background-color: white;
     margin-right: 15px;
+    object-fit: cover;
     /* padding: auto; */
     /* margin: auto; */
 }

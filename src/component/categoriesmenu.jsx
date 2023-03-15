@@ -40,7 +40,7 @@ function Categoriesmenu() {
     <div id="explore">Explore</div>
 
    
-    <div id="categorymenu" style={{height: "500px", overflow: "scroll", overflowX: "auto", overflowY: "scroll"}}>
+    <div id="categorymenu" style={{height: "480px", overflow: "scroll", overflowX: "auto", overflowY: "scroll"}}>
         <ListGroup>
             <ListGroupItem tag={Link} to="/feed">
                     All Categories
@@ -72,12 +72,12 @@ function Categoriesmenu() {
 
     <Button style={{
         width: "100%",
-         marginTop: "30px"
+         marginTop: "20px"
     }}
     onClick={() => {
         window.location.pathname = "/categories/" + selectedCategory
     }}
-    > VIEW CATEGORIES </Button>
+    > APPLY FILTER </Button>
     </div>
 
    </>

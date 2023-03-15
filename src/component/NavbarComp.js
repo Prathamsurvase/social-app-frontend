@@ -13,7 +13,9 @@ import { FaUserAlt } from "react-icons/fa";
 import "./navbar.css"
 
 
-function NavScrollExample() {
+function NavScrollExample({
+  onSearchValueChange
+}) {
   const user = JSON.parse(localStorage.getItem("data")).user 
 
   console.log("USER", user)
@@ -27,7 +29,7 @@ function NavScrollExample() {
       <Container fluid>
         <Navbar.Brand href="#"><img className="navlogo" src={Logo} /></Navbar.Brand>
 
-        <NavDropdown title="Explore" id="navbarScrollingDropdown" className="explore">
+        <NavDropdown title="Explore" id="navbarScrollingDropdown" className="explore" style={{display:"none"}}>
           <NavDropdown.Item href="#action3">Machine learning</NavDropdown.Item>
           <NavDropdown.Item href="#action4">Python </NavDropdown.Item>
           <NavDropdown.Divider />
@@ -42,6 +44,7 @@ function NavScrollExample() {
             placeholder="Search"
             className="me-2"
             aria-label="Search"
+            onChange={onSearchValueChange}
           />
         </Form>
         <Container className="navbaroption">
@@ -53,13 +56,14 @@ function NavScrollExample() {
               navbarScroll
             >
               <Nav.Link className="navoption"  href="/feed"><FaHome/>Home</Nav.Link>
-              <Nav.Link className="navoption" href="#action2"><FaBell/>Notification</Nav.Link>
-              <Nav.Link className="navoption" href="#action2"><FaFacebookMessenger/>Messages</Nav.Link>
+              <Nav.Link className="navoption" href="/notification"><FaBell/>Notification</Nav.Link>
               <Nav.Link className="navoption" href="/bookmark"><FaBookmark/>Saved</Nav.Link>
+              <Nav.Link className="navoption" href="about"><FaFacebookMessenger/>About</Nav.Link>
               
             </Nav>
             <div className="userprofile">
-            {user?.firstName} {user?.lastName}
+            Hi, {user?.firstName}
+             {/* {user?.lastName} */}
             <img className="navprofile"
             src={`data:image/png;base64,${user?.profileImage}`}
             >
